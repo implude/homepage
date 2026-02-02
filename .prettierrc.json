@@ -1,0 +1,22 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 150,
+	"bracketSameLine": true,
+	"plugins": ["prettier-plugin-astro", "prettier-plugin-svelte", "@prettier/plugin-xml"],
+	"overrides": [
+		{
+			"files": "*.astro",
+			"options": { "parser": "astro" }
+		},
+		{
+			"files": "*.svelte",
+			"options": { "parser": "svelte" }
+		},
+		{
+			"files": "*.svg",
+			"options": { "parser": "xml", "xmlWhitespaceSensitivity": "ignore" }
+		}
+	]
+}

@@ -1,0 +1,131 @@
+---
+const navItems = [
+	{ label: 'About', href: '#philosophy' },
+	{ label: 'Stack', href: '#stack' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Members', href: '#members' }
+];
+---
+
+<nav class="nav">
+	<div class="nav-inner">
+		<a href="/" class="logo">
+			<img src="/logo.svg" alt="IMPLUDE" class="logo-img" />
+			<span class="logo-text">IMPLUDE</span>
+		</a>
+
+		<ul class="nav-links">
+			{
+				navItems.map((item) => (
+					<li>
+						<a href={item.href}>{item.label}</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<a href="#join" class="nav-cta">
+			<span class="cta-prompt">$</span> join
+		</a>
+	</div>
+</nav>
+
+<style lang="scss">
+	@use '../styles/variables' as *;
+	@use '../styles/mixins' as *;
+
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: $z-sticky;
+
+		@include glass;
+
+		border-bottom: 1px solid $border-subtle;
+	}
+
+	.nav-inner {
+		@include flex-between;
+
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: $space-4 $space-6;
+
+		@include respond-below($breakpoint-md) {
+			padding: $space-3 $space-4;
+		}
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: $space-3;
+		text-decoration: none;
+
+		&:hover .logo-img {
+			transform: scale(1.05);
+		}
+	}
+
+	.logo-img {
+		height: 32px;
+		width: auto;
+		transition: transform $duration-fast $ease-out;
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.logo-text {
+		font-family: $font-mono;
+		font-size: $text-lg;
+		font-weight: 600;
+		color: $text-primary;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: $space-8;
+		list-style: none;
+
+		@include respond-below($breakpoint-md) {
+			display: none;
+		}
+
+		a {
+			font-size: $text-sm;
+			color: $text-secondary;
+			text-decoration: none;
+			transition: color $duration-fast $ease-out;
+
+			&:hover {
+				color: $text-primary;
+			}
+		}
+	}
+
+	.nav-cta {
+		display: flex;
+		align-items: center;
+		gap: $space-2;
+		padding: $space-2 $space-4;
+		font-family: $font-mono;
+		font-size: $text-sm;
+		color: $accent;
+		background: $accent-muted;
+		border: 1px solid $accent;
+		border-radius: $radius-md;
+		text-decoration: none;
+		transition: all $duration-fast $ease-out;
+
+		&:hover {
+			background: $accent;
+			color: $bg-base;
+			box-shadow: $shadow-glow;
+		}
+	}
+
+	.cta-prompt {
+		color: $text-muted;
+	}
+</style>

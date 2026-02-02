@@ -1,0 +1,88 @@
+@use 'variables' as *;
+
+// ===== Layout =====
+@mixin flex-center() {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flex-between() {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@mixin grid-auto($min: 280px) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+}
+
+// ===== Typography =====
+@mixin text-gradient($from: $accent, $to: $accent-hover) {
+	background: linear-gradient(135deg, $from, $to);
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+@mixin mono() {
+	font-family: $font-mono;
+	font-feature-settings: 'liga' 1;
+}
+
+// ===== Effects =====
+@mixin glow($color: $accent-glow, $size: 20px) {
+	box-shadow: 0 0 $size $color;
+}
+
+@mixin border-glow($color: $accent) {
+	border: 1px solid $color;
+	box-shadow: 0 0 10px rgba($color, 0.3), inset 0 0 10px rgba($color, 0.1);
+}
+
+@mixin glass($blur: 12px, $opacity: 0.8) {
+	background: rgba($bg-surface, $opacity);
+	backdrop-filter: blur($blur);
+}
+
+// ===== Patterns =====
+@mixin dot-pattern($color: $border-subtle, $size: 1px, $gap: 24px) {
+	background-image: radial-gradient($color $size, transparent $size);
+	background-size: $gap $gap;
+}
+
+@mixin grid-pattern($color: $border-subtle, $size: 1px, $gap: 40px) {
+	background-image: linear-gradient($color $size, transparent $size), linear-gradient(90deg, $color $size, transparent $size);
+	background-size: $gap $gap;
+}
+
+// ===== Interactive =====
+@mixin hover-lift() {
+	transition: transform $duration-normal $ease-out, box-shadow $duration-normal $ease-out;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: $shadow-lg;
+	}
+}
+
+@mixin hover-glow() {
+	transition: box-shadow $duration-normal $ease-out;
+
+	&:hover {
+		@include glow;
+	}
+}
+
+// ===== Responsive =====
+@mixin respond-above($bp) {
+	@media (min-width: $bp) {
+		@content;
+	}
+}
+
+@mixin respond-below($bp) {
+	@media (max-width: $bp - 1px) {
+		@content;
+	}
+}

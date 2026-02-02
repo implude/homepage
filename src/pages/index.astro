@@ -1,0 +1,25 @@
+---
+import CodeQuality from '../components/CodeQuality.svelte';
+import DeployPipeline from '../components/DeployPipeline.svelte';
+import Hero from '../components/Hero.svelte';
+import Philosophy from '../components/Philosophy.svelte';
+import Stack from '../components/Stack.svelte';
+import Base from '../layouts/Base.astro';
+---
+
+<Base>
+	<Hero client:load />
+	<Philosophy client:visible />
+	<Stack client:visible />
+	<CodeQuality client:visible />
+	<DeployPipeline client:visible />
+</Base>
+
+<style lang="scss">
+	@use '../styles/variables' as *;
+
+	.section {
+		min-height: 100vh;
+		padding-top: $space-24;
+	}
+</style>

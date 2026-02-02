@@ -1,0 +1,53 @@
+{
+	"name": "implude",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "eslint . && stylelint \"**/*.{css,scss,svelte,astro}\"",
+		"lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss,svelte,astro}\" --fix",
+		"format": "prettier --write \"**/*.{svg,json,md,html,yaml,yml}\"",
+		"fix": "bun lint:fix && bun format"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^12.6.12",
+		"@astrojs/sitemap": "^3.7.0",
+		"@astrojs/svelte": "^7.2.5",
+		"@iconify/svelte": "^5.2.1",
+		"@studio-freight/lenis": "^1.0.42",
+		"@threlte/core": "^8.3.1",
+		"@threlte/extras": "^9.7.1",
+		"@types/three": "^0.182.0",
+		"astro": "^5.17.1",
+		"gsap": "^3.14.2",
+		"open-props": "^1.7.23",
+		"svelte": "^5.49.1",
+		"three": "^0.182.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.2",
+		"@prettier/plugin-xml": "^3.4.2",
+		"@stylistic/stylelint-plugin": "^5.0.1",
+		"astro-eslint-parser": "^1.2.2",
+		"eslint": "^9.39.2",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-astro": "^1.5.0",
+		"eslint-plugin-prettier": "^5.5.5",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"eslint-plugin-svelte": "^3.14.0",
+		"globals": "^17.3.0",
+		"postcss-html": "^1.8.1",
+		"prettier": "^3.8.1",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-svelte": "^3.4.1",
+		"sass": "^1.97.3",
+		"stylelint": "^17.1.0",
+		"stylelint-config-standard-scss": "^17.0.0",
+		"svelte-eslint-parser": "^1.4.1",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.54.0"
+	}
+}

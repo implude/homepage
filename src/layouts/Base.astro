@@ -1,0 +1,39 @@
+---
+import '../styles/global.scss';
+
+import { Font } from 'astro:assets';
+
+import Nav from '../components/Nav.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = 'IMPLUDE', description = 'Right Tool, Right Time. 코드 퀄리티를 추구하는 프로그래밍 동아리' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="text/svg+xml" href="/logo.svg" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<Font cssVariable="--font-sans" preload />
+		<Font cssVariable="--font-mono" preload />
+	</head>
+	<body>
+		<Nav />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style lang="scss">
+	main {
+		min-height: 100vh;
+	}
+</style>
