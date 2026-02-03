@@ -5,8 +5,8 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro",
+		"preview": "wrangler dev",
+		"deploy": "bun run build && wrangler deploy",
 		"lint": "eslint . && stylelint \"**/*.{css,scss,svelte,astro}\"",
 		"lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss,svelte,astro}\" --fix",
 		"format": "prettier --write \"**/*.{svg,json,md,html,yaml,yml}\"",
@@ -48,6 +48,7 @@
 		"stylelint-config-standard-scss": "^17.0.0",
 		"svelte-eslint-parser": "^1.4.1",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.54.0"
+		"typescript-eslint": "^8.54.0",
+		"wrangler": "^4.61.1"
 	}
 }

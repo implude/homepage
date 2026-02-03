@@ -4,6 +4,7 @@ import svelte from '@astrojs/svelte';
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
+	output: 'server',
 	integrations: [svelte(), sitemap()],
 	adapter: cloudflare({
 		imageService: 'cloudflare'
