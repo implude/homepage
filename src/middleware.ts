@@ -11,10 +11,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 	response.headers.set('Cross-Origin-Resource-Policy', 'same-origin');
 	response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 	response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
-	response.headers.set(
-		'Permissions-Policy',
-		'accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()'
-	);
+	response.headers.set('Permissions-Policy', 'accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()');
 
 	const csp = [
 		"default-src 'self'",
