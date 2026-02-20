@@ -8,9 +8,44 @@ import Nav from '../components/Nav.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	canonicalPath?: string;
+	image?: string;
+	noindex?: boolean;
 }
 
-const { title = '임플루드(IMPLUDE)', description = 'Right Tool, Right Time. 코드 퀄리티를 추구하는 프로그래밍 동아리, 임플루드' } = Astro.props;
+const {
+	title = '임플루드 (IMPLUDE) | 코드 퀄리티를 추구하는 프로그래밍 동아리',
+	description = '임플루드(IMPLUDE)는 Right Tool, Right Time 철학으로 코드 퀄리티를 추구하는 프로그래밍 동아리입니다.',
+	canonicalPath,
+	image = '/logo.svg',
+	noindex = false
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://implu.de');
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, site);
+const ogImageURL = new URL(image, site);
+const robotsContent = noindex
+	? 'noindex, nofollow'
+	: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: '임플루드',
+	alternateName: 'IMPLUDE',
+	url: site.href,
+	logo: ogImageURL.href,
+	description
+};
+
+const webSiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: '임플루드',
+	alternateName: 'IMPLUDE',
+	url: site.href,
+	inLanguage: 'ko-KR'
+};
 ---
 
 <!doctype html>
@@ -19,9 +54,28 @@ const { title = '임플루드(IMPLUDE)', description = 'Right Tool, Right Time. 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="text/svg+xml" href="/logo.svg" />
+		<link rel="canonical" href={canonicalURL.href} />
+		<link rel="alternate" hrefLang="ko-KR" href={canonicalURL.href} />
+		<link rel="alternate" hrefLang="x-default" href={canonicalURL.href} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="description" content={description} />
+		<meta name="robots" content={robotsContent} />
+		<meta name="googlebot" content={robotsContent} />
+		<meta name="theme-color" content="#0a0a0b" />
+		<meta property="og:locale" content="ko_KR" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="임플루드 (IMPLUDE)" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL.href} />
+		<meta property="og:image" content={ogImageURL.href} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL.href} />
 		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
 		<Font cssVariable="--font-sans" preload />
 		<Font cssVariable="--font-mono" preload />
 	</head>
