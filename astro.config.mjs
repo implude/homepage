@@ -1,4 +1,4 @@
-import cloudflare from '@astrojs/cloudflare';
+import bun from '@nurodev/astro-bun';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import { defineConfig, fontProviders } from 'astro/config';
@@ -7,9 +7,7 @@ export default defineConfig({
 	site: 'https://implu.de',
 	output: 'server',
 	integrations: [svelte(), sitemap()],
-	adapter: cloudflare({
-		imageService: 'cloudflare'
-	}),
+	adapter: bun(),
 	experimental: {
 		fonts: [
 			{
