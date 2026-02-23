@@ -1,4 +1,4 @@
-import bun from '@nurodev/astro-bun';
+import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
 import { defineConfig, fontProviders } from 'astro/config';
@@ -7,7 +7,9 @@ export default defineConfig({
 	site: 'https://implu.de',
 	output: 'server',
 	integrations: [svelte(), sitemap()],
-	adapter: bun(),
+	adapter: node({
+		mode: 'standalone'
+	}),
 	experimental: {
 		fonts: [
 			{

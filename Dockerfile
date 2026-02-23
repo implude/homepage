@@ -16,7 +16,9 @@ COPY package.json bun.lock ./
 RUN bun install --production --frozen-lockfile
 
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/server.ts ./server.ts
+
+ENV HOST=0.0.0.0
+ENV PORT=8080
 
 EXPOSE 8080
 ENTRYPOINT ["bun", "run", "start"]

@@ -5,17 +5,17 @@
 	"scripts": {
 		"dev": "bunx --bun astro dev",
 		"build": "bunx --bun astro build",
-		"start": "bun run server.ts",
+		"start": "bun run ./dist/server/entry.mjs",
 		"lint": "eslint . && stylelint \"**/*.{css,scss,svelte,astro}\"",
 		"lint:fix": "eslint . --fix && stylelint \"**/*.{css,scss,svelte,astro}\" --fix",
 		"format": "prettier --write \"**/*.{svg,json,md,html,yaml,yml}\"",
 		"fix": "bun lint:fix && bun format"
 	},
 	"dependencies": {
+		"@astrojs/node": "^9.5.4",
 		"@astrojs/sitemap": "^3.7.0",
 		"@astrojs/svelte": "^7.2.5",
 		"@iconify/svelte": "^5.2.1",
-		"@nurodev/astro-bun": "^2.1.2",
 		"@studio-freight/lenis": "^1.0.42",
 		"@threlte/core": "^8.3.1",
 		"@threlte/extras": "^9.7.1",
