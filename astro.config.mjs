@@ -13,13 +13,13 @@ export default defineConfig({
 	experimental: {
 		fonts: [
 			{
-				provider: fontProviders.google(),
-				name: 'Inter',
+				provider: fontProviders.fontsource(),
+				name: 'Pretendard',
 				cssVariable: '--font-sans',
 				fallbacks: ['-apple-system', 'sans-serif']
 			},
 			{
-				provider: fontProviders.google(),
+				provider: fontProviders.fontsource(),
 				name: 'JetBrains Mono',
 				cssVariable: '--font-mono',
 				fallbacks: ['monospace']
