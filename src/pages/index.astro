@@ -1,22 +1,10 @@
 ---
 import CodeQuality from '../components/CodeQuality.svelte';
 import Hero from '../components/Hero.svelte';
-import Members from '../components/Members.svelte';
+import MembersSection from '../components/MembersSection.astro';
 import Philosophy from '../components/Philosophy.svelte';
 import Stack from '../components/Stack.svelte';
 import Base from '../layouts/Base.astro';
-import type { Generation } from '../types/members.ts';
-
-const MEMBERS_API = import.meta.env.MEMBERS_API_URL || 'http://localhost:3000';
-
-let generations: Generation[] = [];
-
-try {
-	const res = await fetch(`${MEMBERS_API}/members`);
-	generations = await res.json();
-} catch (e) {
-	console.error('Failed to fetch members:', e);
-}
 ---
 
 <Base
@@ -26,7 +14,7 @@ try {
 	<Philosophy client:visible />
 	<Stack client:visible />
 	<CodeQuality client:visible />
-	{generations.length > 0 && <Members client:visible {generations} />}
+	<MembersSection />
 </Base>
 
 <style lang="scss">

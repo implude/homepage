@@ -25,5 +25,11 @@ export default defineConfig({
 				fallbacks: ['monospace']
 			}
 		]
+	},
+	vite: {
+		build: {
+			sourcemap: false,
+			minify: true
+		}
 	}
 });

@@ -1,0 +1,17 @@
+---
+import type { Generation } from '../types/members.ts';
+import Members from './Members.svelte';
+
+const MEMBERS_API = import.meta.env.MEMBERS_API_URL || 'http://localhost:3000';
+
+let generations: Generation[] = [];
+
+try {
+	const res = await fetch(`${MEMBERS_API}/members`);
+	generations = await res.json();
+} catch (e) {
+	console.error('Failed to fetch members:', e);
+}
+---
+
+{generations.length > 0 && <Members client:visible {generations} />}

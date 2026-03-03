@@ -230,7 +230,9 @@
 						</div>
 
 						<div class="card-body">
-							<span class="card-role" style="
+							<span
+								class="card-role"
+								style="
 
 --role-color: {getRoleColor(member.role)};">
 								{member.role}
