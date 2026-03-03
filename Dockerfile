@@ -8,6 +8,9 @@ COPY tsconfig.json astro.config.mjs svelte.config.js ./
 COPY ./public ./public
 COPY ./src ./src
 
+ARG MEMBERS_API_URL
+ENV MEMBERS_API_URL=${MEMBERS_API_URL}
+
 RUN bun run build
 
 FROM oven/bun:alpine AS runtime
