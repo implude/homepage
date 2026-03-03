@@ -1,19 +1,19 @@
-FROM oven/bun:alpine AS base
+FROM oven/bun:alpine AS build
 WORKDIR /app
-
-FROM base AS build
 
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
-COPY . .
-RUN bun run astro build
+COPY tsconfig.json astro.config.mjs svelte.config.js ./
+COPY ./public ./public
+COPY ./src ./src
+
+RUN bun run build
 
 FROM oven/bun:alpine AS runtime
-WORKDIR /app
 
 COPY package.json bun.lock ./
-RUN bun install --production --frozen-lockfile
+RUN bun install --frozen-lockfile --production
 
 COPY --from=build /app/dist ./dist
 
