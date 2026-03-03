@@ -27,6 +27,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+main {
+	min-height: 100vh;
+}
+
 // ===== Selection =====
 ::selection {
 	background: $accent-muted;
