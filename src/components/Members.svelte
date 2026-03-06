@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	import type { Generation } from '../types/members.ts';
 
@@ -99,18 +99,27 @@
 		startAutoplay();
 	}
 
-	function handleTabSwitch(index: number) {
+	async function handleTabSwitch(index: number) {
 		activeGen = index;
+		currentIndex = 0;
+
+		await tick();
 
 		if (carouselRef) {
+			gsap.killTweensOf(carouselRef.querySelectorAll('.member-card'));
+
 			gsap.from(carouselRef.querySelectorAll('.member-card'), {
 				y: 20,
 				opacity: 0,
 				duration: 0.4,
 				stagger: 0.08,
-				ease: 'power2.out'
+				ease: 'power2.out',
+				clearProps: 'all'
 			});
 		}
+
+		scrollToIndex(0);
+		resetAutoplay();
 	}
 
 	onMount(() => {
@@ -232,9 +241,7 @@
 						<div class="card-body">
 							<span
 								class="card-role"
-								style="
-
---role-color: {getRoleColor(member.role)};">
+								style="--role-color: {getRoleColor(member.role)};">
 								{member.role}
 							</span>
 							<h3 class="card-name">{member.name}</h3>
@@ -505,8 +512,8 @@
 			border-color: rgb(59 130 246 / 40%);
 			transform: translateY(-4px);
 			box-shadow:
-				0 8px 32px rgb(0 0 0 / 40%),
-				0 0 20px rgb(59 130 246 / 10%);
+					0 8px 32px rgb(0 0 0 / 40%),
+					0 0 20px rgb(59 130 246 / 10%);
 		}
 
 		@media (max-width: $breakpoint-sm) {
