@@ -3,14 +3,21 @@ import type { Generation } from '../types/members.ts';
 import Members from './Members.svelte';
 
 const MEMBERS_API = import.meta.env.MEMBERS_API_URL || 'http://localhost:3000';
+const PUBLIC_API = import.meta.env.PUBLIC_API_URL || 'https://api.implu.de';
 
 let generations: Generation[] = [];
 
 try {
-	const res = await fetch(`${MEMBERS_API}/members`);
-	generations = await res.json();
+    const res = await fetch(`${MEMBERS_API}/members`);
+    generations = (await res.json()).map((g: Generation) => ({
+        ...g,
+        members: g.members.map((m) => ({
+            ...m,
+            image: m.image ? `${PUBLIC_API}/images/${m.image}` : undefined,
+        })),
+    }));
 } catch (e) {
-	console.error('Failed to fetch members:', e);
+    console.error('Failed to fetch members:', e);
 }
 ---
 
