@@ -181,17 +181,17 @@
 
 	.quality {
 		min-height: 100vh;
-		padding: $space-24 0;
+		padding: $space-12 0;
 		background: $bg-surface;
 
 		@media (max-width: $breakpoint-md) {
-			padding: $space-16 0;
+			padding: $space-10 0;
 		}
 	}
 
 	.quality-header {
 		text-align: center;
-		margin-bottom: $space-12;
+		margin-bottom: $space-6;
 	}
 
 	.quality-title {
@@ -217,7 +217,7 @@
 
 	.diff-container {
 		max-width: 700px;
-		margin: 0 auto $space-12;
+		margin: 0 auto $space-8;
 		background: $bg-base;
 		border: 1px solid $border-subtle;
 		border-radius: $radius-lg;
@@ -246,11 +246,11 @@
 	}
 
 	.diff-body {
-		padding: $space-4;
+		padding: $space-3;
 	}
 
 	.diff-section {
-		margin-bottom: $space-4;
+		margin-bottom: $space-2;
 
 		&:last-of-type {
 			margin-bottom: 0;
@@ -287,8 +287,8 @@
 		align-items: flex-start;
 		font-family: $font-mono;
 		font-size: $text-sm;
-		line-height: 1.6;
-		padding: $space-1 $space-2;
+		line-height: 1.4;
+		padding: 2px $space-2;
 		border-radius: $radius-sm;
 		margin-bottom: 2px;
 
@@ -341,7 +341,7 @@
 	.diff-divider {
 		display: flex;
 		justify-content: center;
-		padding: $space-2 0;
+		padding: $space-1 0;
 	}
 
 	:global(.divider-icon) {
@@ -384,7 +384,7 @@
 	.principles-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: $space-6;
+		gap: $space-4;
 		max-width: 900px;
 		margin: 0 auto;
 
@@ -399,7 +399,7 @@
 
 	.principle-card {
 		text-align: center;
-		padding: $space-6;
+		padding: $space-4;
 		background: $bg-base;
 		border: 1px solid $border-subtle;
 		border-radius: $radius-lg;
@@ -425,9 +425,9 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 48px;
-		height: 48px;
-		margin-bottom: $space-4;
+		width: 40px;
+		height: 40px;
+		margin-bottom: $space-2;
 		background: $bg-elevated;
 		border: 1px solid $border-subtle;
 		border-radius: $radius-md;
@@ -446,7 +446,7 @@
 		font-size: $text-base;
 		font-weight: 600;
 		color: $text-primary;
-		margin-bottom: $space-2;
+		margin-bottom: $space-1;
 	}
 
 	.principle-description {

@@ -274,18 +274,18 @@
 	@use '../styles/mixins' as *;
 
 	.members {
-		min-height: 100vh;
-		padding: $space-24 0;
+		min-height: 90dvh;
+		padding: $space-8 0 0;
 		background: $bg-surface;
 
 		@media (max-width: $breakpoint-md) {
-			padding: $space-16 0;
+			padding: $space-6 0;
 		}
 	}
 
 	.members-header {
 		text-align: center;
-		margin-bottom: $space-8;
+		margin-bottom: $space-4;
 	}
 
 	.members-title {
@@ -311,7 +311,7 @@
 
 	.members-terminal {
 		max-width: 700px;
-		margin: 0 auto $space-10;
+		margin: 0 auto $space-6;
 		background: $bg-base;
 		border: 1px solid $border-subtle;
 		border-radius: $radius-lg;
@@ -443,8 +443,13 @@
 	}
 
 	.carousel-track {
-		display: flex;
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		grid-auto-columns: 220px;
 		gap: $space-6;
+		align-items: start;
+		align-content: start;
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 		scroll-behavior: smooth;
@@ -456,6 +461,7 @@
 		}
 
 		@media (max-width: $breakpoint-sm) {
+			grid-auto-columns: 180px;
 			gap: $space-4;
 		}
 	}
@@ -499,7 +505,7 @@
 	}
 
 	.member-card {
-		flex: 0 0 220px;
+		width: 100%;
 		scroll-snap-align: center;
 		background: $bg-base;
 		border: 1px solid $border-subtle;
@@ -517,9 +523,6 @@
 					0 0 20px rgb(59 130 246 / 10%);
 		}
 
-		@media (max-width: $breakpoint-sm) {
-			flex: 0 0 180px;
-		}
 	}
 
 	.card-image {
@@ -527,12 +530,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 180px;
+		height: 110px;
 		background: $bg-elevated;
 		overflow: hidden;
 
 		@media (max-width: $breakpoint-sm) {
-			height: 150px;
+			height: 90px;
 		}
 	}
 
