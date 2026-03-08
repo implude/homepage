@@ -505,6 +505,7 @@
 	}
 
 	.member-card {
+        min-height: 220px;
 		width: 100%;
 		scroll-snap-align: center;
 		background: $bg-base;
