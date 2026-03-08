@@ -221,6 +221,7 @@
 									src={member.image}
 									alt={member.name}
 									class="avatar-img"
+									loading="lazy"
 									onerror={(e) => {
 										const target = e.currentTarget as HTMLImageElement;
 										target.style.display = 'none';
