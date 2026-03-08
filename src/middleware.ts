@@ -17,7 +17,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		"default-src 'self'",
 		"script-src 'self' 'unsafe-inline' 'unsafe-eval'",
 		"style-src 'self' 'unsafe-inline'",
-		"img-src 'self' data: blob: https://api.iconify.design " + (import.meta.env.MEMBERS_API_URL || 'http://localhost:3000'),
+		"img-src 'self' data: blob: https://api.iconify.design " + (import.meta.env.PUBLIC_API_URL || 'http://localhost:3000'),
 		"font-src 'self' data:",
 		"connect-src 'self' https://api.iconify.design https://api.simplesvg.com",
 		"frame-ancestors 'none'",
