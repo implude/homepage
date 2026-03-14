@@ -10,22 +10,20 @@ export default defineConfig({
 	adapter: node({
 		mode: 'standalone'
 	}),
-	experimental: {
-		fonts: [
-			{
-				provider: fontProviders.fontsource(),
-				name: 'Pretendard',
-				cssVariable: '--font-sans',
-				fallbacks: ['-apple-system', 'sans-serif']
-			},
-			{
-				provider: fontProviders.fontsource(),
-				name: 'JetBrains Mono',
-				cssVariable: '--font-mono',
-				fallbacks: ['monospace']
-			}
-		]
-	},
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: 'Pretendard',
+			cssVariable: '--font-sans',
+			fallbacks: ['-apple-system', 'sans-serif']
+		},
+		{
+			provider: fontProviders.fontsource(),
+			name: 'JetBrains Mono',
+			cssVariable: '--font-mono',
+			fallbacks: ['monospace']
+		}
+	],
 	vite: {
 		build: {
 			sourcemap: false,
